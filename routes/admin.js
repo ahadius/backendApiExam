@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const asyncerror = require('../middlewares/catchasyncerror');
-const ErrorHandler = require('../middlewares/errorhandler');
+
 const User = require('../model/user.js')
 const { verifyToken, isadmin } = require('../middlewares/verifyauth');
 const jwt = require('jsonwebtoken');
