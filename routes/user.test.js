@@ -20,11 +20,9 @@ describe("route that should logg inn the users", () => {
     });
 
     jwt.sign = jest.fn().mockReturnValueOnce("mock-token");
-
     const response = await request(app)
-      .post("/login")
-      .send({ email: "admin1", password: "admin123" });
-
+    .post("/login")
+    .send({ email: "admin1", password: "admin123" });
     expect(response.status).toBe(200);
     expect(response.body.success).toBe(true);
     expect(response.body.token).toBe("mock-token");
@@ -61,10 +59,9 @@ describe("route that should logg inn the users", () => {
     Activity.prototype.save = saveMock;
 
     const response = await request(app)
-      .post("/bookhours")
-      .set('Authentication', `Bearer ${mockToken}`)
-      .send({ id: '64d564ad28e0a9afb3875be3', hours: 2 });
-
+    .post("/bookhours")
+    .set('Authentication', `Bearer ${mockToken}`)
+    .send({ id: '64d564ad28e0a9afb3875be3', hours: 2 });
     expect(response.status).toBe(200);
     expect(response.body.success).toBe(true);
     expect(response.body.bookedHours).toHaveLength(2);
