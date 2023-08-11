@@ -57,7 +57,6 @@ describe("route that should logg inn the users", () => {
   it("should successfully book available hours for a user", async () => {
     const saveMock = jest.fn();
     Activity.prototype.save = saveMock;
-
     const response = await request(app)
     .post("/bookhours")
     .set('Authentication', `Bearer ${mockToken}`)
